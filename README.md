@@ -1,8 +1,4 @@
-# JPplusShinkansen
 
-Welcome to 🇯🇵🚅 **JP+Shinkansen!** 🚅🇯🇵
-
-This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJake/JPengines)🚂 , 🚆[JP+ Multiple Units](https://github.com/Tintinfan/JPplusSet)🚆 and 🚇[JP+ Major Private](https://github.com/Yozora3/JPplusPrivate)🚇, adding the world's first High Speed Rail Network's iconic trains.
 
 ## Credits
 **Coding:** KeepinItRail\
