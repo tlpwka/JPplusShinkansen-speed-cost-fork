@@ -14,9 +14,9 @@ item(FEAT_TRAINS, series_e8) {
         reliability_decay:              21;
         cargo_capacity:                 50;
         loading_speed:                  20;
-        cost_factor:                    175;
-        running_cost_factor:            120;
-        speed:                          300 km/h;
+        cost_factor:                    175 * param_purchase_cost;
+        running_cost_factor:            120 * param_running_cost;
+        speed:                          395 km/h;
         track_type:                     MINI_SHINKANSEN;
         power:                          400 * 4 hp;
         weight:                         42 ton;
@@ -24,7 +24,7 @@ item(FEAT_TRAINS, series_e8) {
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC);
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
         //dual_headed:                    1;
@@ -53,8 +53,8 @@ item(FEAT_TRAINS, series_e8) {
         weight:                         42 * num_vehs_in_consist;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (445 + 130 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   (445 + 130) / 2; 	
+        running_cost_factor:            (445 + 130 * num_vehs_in_consist * param_A / param_B/2 ) * RunningCostFactor() * param_running_cost;
+        purchase_running_cost_factor:   (445 + 130) / 2 * param_running_cost; 	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){

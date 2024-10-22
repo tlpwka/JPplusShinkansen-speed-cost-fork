@@ -32,7 +32,7 @@ item(FEAT_TRAINS, series_l0) {
 		track_type:                     SC_MAGLEV;
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
@@ -40,7 +40,7 @@ item(FEAT_TRAINS, series_l0) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-        speed:                          505 km/h;									
+        speed:                          605 km/h;									
 		power:                          800*4*10 hp;            			
 		weight:                         25 tons;	                			
 		tractive_effort_coefficient:    0.3;
@@ -67,9 +67,9 @@ item(FEAT_TRAINS, series_l0) {
 		purchase_cargo_capacity:		60 / 3 * CapacityFactor() ;													
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    260;
-		running_cost_factor:            (600 + 250 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   600 + 250 * NumberCarsInConsist();	
+		cost_factor:                    260 * param_purchase_cost;
+		running_cost_factor:            (600 + 250 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   600 * param_running_cost + 250 * param_running_cost * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	

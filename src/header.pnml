@@ -74,39 +74,82 @@
 				}
 		}
 		//basecosts
-		param 0 {
-				param_basecostbuy {
-						type: int;
-						name: string(STR_PARAM_NAME_BASECOSTMODBUY);
-						desc: string(STR_PARAM_DESC_BASECOSTMODBUY);
-						min_value: 0;
-						max_value: 2;
-						def_value: 1;
-						names: {
-												0: string(STR_PARAM_LOW);
-												1: string(STR_PARAM_NORMAL);
-												2: string(STR_PARAM_HIGH);
-						};
-				}
-		}
+//		param 0 {
+//				param_basecostbuy {
+//						type: int;
+//						name: string(STR_PARAM_NAME_BASECOSTMODBUY);
+//						desc: string(STR_PARAM_DESC_BASECOSTMODBUY);
+//						min_value: 0;
+//						max_value: 2;
+//						def_value: 1;
+//						names: {
+//												0: string(STR_PARAM_LOW);
+//												1: string(STR_PARAM_NORMAL);
+//												2: string(STR_PARAM_HIGH);
+//						};
+//				}
+//		}
 		//runningcosts
-		param 1 {
-				param_basecostrun {
-						type: int;
-						name: string(STR_PARAM_NAME_BASECOSTMODRUN);
-						desc: string(STR_PARAM_DESC_BASECOSTMODRUN);
-						min_value: 0;
-						max_value: 4;
-						def_value: 2;
-						names: {
-												0: string(STR_PARAM_VLOW);
-												1: string(STR_PARAM_LOW);
-												2: string(STR_PARAM_NORMAL);
-												3: string(STR_PARAM_HIGH);
-												4: string(STR_PARAM_VHIGH);
-						};
-				}
-		}
+	//	param 1 {
+			//	param_basecostrun {
+				//		type: int;
+				//		name: string(STR_PARAM_NAME_BASECOSTMODRUN);
+				//		desc: string(STR_PARAM_DESC_BASECOSTMODRUN);
+				//		min_value: 0;
+				//		max_value: 4;
+				//		def_value: 2;
+				//		names: {
+				//								0: string(STR_PARAM_VLOW);
+				//								1: string(STR_PARAM_LOW);
+				//								2: string(STR_PARAM_NORMAL);
+				//								3: string(STR_PARAM_HIGH);
+				//								4: string(STR_PARAM_VHIGH);
+				//		};
+//				}
+//		}
+		       param 9 {
+        param_purchase_cost {
+            type:   int;
+            name:   string(STR_PARAM_PURCHASE_COST);
+            desc:   string(STR_PARAM_PURCHASE_COST_DESC);
+            min_value: 1;
+            max_value: 9;
+            def_value: 5;
+            names: {
+                        1: string(STR_PARAM_DIVIDE_16);
+                        2: string(STR_PARAM_DIVIDE_8);
+                        3: string(STR_PARAM_DIVIDE_4);
+                        4: string(STR_PARAM_DIVIDE_2);
+                        5: string(STR_PARAM_NORMAL_1);
+                        6: string(STR_PARAM_TIMES_2);
+                        7: string(STR_PARAM_TIMES_4);
+                        8: string(STR_PARAM_TIMES_8);
+                        9: string(STR_PARAM_TIMES_16);
+            };
+        }
+    }
+    param 10 {
+        param_running_cost {
+            type:   int;
+            name:   string(STR_PARAM_RUNNING_COST);
+            desc:   string(STR_PARAM_RUNNING_COST_DESC);
+            min_value: 1;
+            max_value: 9;
+            def_value: 5;
+            names: {
+                        1: string(STR_PARAM_DIVIDE_16);
+                        2: string(STR_PARAM_DIVIDE_8);
+                        3: string(STR_PARAM_DIVIDE_4);
+                        4: string(STR_PARAM_DIVIDE_2);
+                        5: string(STR_PARAM_NORMAL_1);
+                        6: string(STR_PARAM_TIMES_2);
+                        7: string(STR_PARAM_TIMES_4);
+                        8: string(STR_PARAM_TIMES_8);
+                        9: string(STR_PARAM_TIMES_16);
+            };
+        }
+    }
+		
 		//cargo decay
 		param 5 {
 			 param_cargodecay {
@@ -124,8 +167,28 @@
 			 
 			}	
 		}
-}
 
+    param 11 {
+        param_A {
+            type:   int;
+            name:   string(STR_PARAM_A);
+            desc:   string(STR_PARAM_A_DESC);
+            min_value: 1;
+            max_value: 10;
+            def_value: 1;
+        }
+    }
+    param 12 {
+        param_B {
+            type:   int;
+            name:   string(STR_PARAM_B);
+            desc:   string(STR_PARAM_B_DESC);
+            min_value: 1;
+            max_value: 10;
+            def_value: 1;
+        }
+    }  
+}  
 // Cargo table
 cargotable {
 	PASS,

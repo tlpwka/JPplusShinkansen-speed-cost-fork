@@ -79,39 +79,82 @@
 				}
 		}
 		//basecosts
-		param 0 {
-				param_basecostbuy {
-						type: int;
-						name: string(STR_PARAM_NAME_BASECOSTMODBUY);
-						desc: string(STR_PARAM_DESC_BASECOSTMODBUY);
-						min_value: 0;
-						max_value: 2;
-						def_value: 1;
-						names: {
-												0: string(STR_PARAM_LOW);
-												1: string(STR_PARAM_NORMAL);
-												2: string(STR_PARAM_HIGH);
-						};
-				}
-		}
+//		param 0 {
+//				param_basecostbuy {
+//						type: int;
+//						name: string(STR_PARAM_NAME_BASECOSTMODBUY);
+//						desc: string(STR_PARAM_DESC_BASECOSTMODBUY);
+//						min_value: 0;
+//						max_value: 2;
+//						def_value: 1;
+//						names: {
+//												0: string(STR_PARAM_LOW);
+//												1: string(STR_PARAM_NORMAL);
+//												2: string(STR_PARAM_HIGH);
+//						};
+//				}
+//		}
 		//runningcosts
-		param 1 {
-				param_basecostrun {
-						type: int;
-						name: string(STR_PARAM_NAME_BASECOSTMODRUN);
-						desc: string(STR_PARAM_DESC_BASECOSTMODRUN);
-						min_value: 0;
-						max_value: 4;
-						def_value: 2;
-						names: {
-												0: string(STR_PARAM_VLOW);
-												1: string(STR_PARAM_LOW);
-												2: string(STR_PARAM_NORMAL);
-												3: string(STR_PARAM_HIGH);
-												4: string(STR_PARAM_VHIGH);
-						};
-				}
-		}
+	//	param 1 {
+			//	param_basecostrun {
+				//		type: int;
+				//		name: string(STR_PARAM_NAME_BASECOSTMODRUN);
+				//		desc: string(STR_PARAM_DESC_BASECOSTMODRUN);
+				//		min_value: 0;
+				//		max_value: 4;
+				//		def_value: 2;
+				//		names: {
+				//								0: string(STR_PARAM_VLOW);
+				//								1: string(STR_PARAM_LOW);
+				//								2: string(STR_PARAM_NORMAL);
+				//								3: string(STR_PARAM_HIGH);
+				//								4: string(STR_PARAM_VHIGH);
+				//		};
+//				}
+//		}
+		       param 9 {
+        param_purchase_cost {
+            type:   int;
+            name:   string(STR_PARAM_PURCHASE_COST);
+            desc:   string(STR_PARAM_PURCHASE_COST_DESC);
+            min_value: 1;
+            max_value: 9;
+            def_value: 5;
+            names: {
+                        1: string(STR_PARAM_DIVIDE_16);
+                        2: string(STR_PARAM_DIVIDE_8);
+                        3: string(STR_PARAM_DIVIDE_4);
+                        4: string(STR_PARAM_DIVIDE_2);
+                        5: string(STR_PARAM_NORMAL_1);
+                        6: string(STR_PARAM_TIMES_2);
+                        7: string(STR_PARAM_TIMES_4);
+                        8: string(STR_PARAM_TIMES_8);
+                        9: string(STR_PARAM_TIMES_16);
+            };
+        }
+    }
+    param 10 {
+        param_running_cost {
+            type:   int;
+            name:   string(STR_PARAM_RUNNING_COST);
+            desc:   string(STR_PARAM_RUNNING_COST_DESC);
+            min_value: 1;
+            max_value: 9;
+            def_value: 5;
+            names: {
+                        1: string(STR_PARAM_DIVIDE_16);
+                        2: string(STR_PARAM_DIVIDE_8);
+                        3: string(STR_PARAM_DIVIDE_4);
+                        4: string(STR_PARAM_DIVIDE_2);
+                        5: string(STR_PARAM_NORMAL_1);
+                        6: string(STR_PARAM_TIMES_2);
+                        7: string(STR_PARAM_TIMES_4);
+                        8: string(STR_PARAM_TIMES_8);
+                        9: string(STR_PARAM_TIMES_16);
+            };
+        }
+    }
+		
 		//cargo decay
 		param 5 {
 			 param_cargodecay {
@@ -129,8 +172,28 @@
 			 
 			}	
 		}
-}
 
+    param 11 {
+        param_A {
+            type:   int;
+            name:   string(STR_PARAM_A);
+            desc:   string(STR_PARAM_A_DESC);
+            min_value: 1;
+            max_value: 10;
+            def_value: 1;
+        }
+    }
+    param 12 {
+        param_B {
+            type:   int;
+            name:   string(STR_PARAM_B);
+            desc:   string(STR_PARAM_B_DESC);
+            min_value: 1;
+            max_value: 10;
+            def_value: 1;
+        }
+    }  
+}  
 // Cargo table
 cargotable {
 	PASS,
@@ -827,13 +890,14 @@ template tmpl_cab_bck_rev(x, y) {
 
 //Helpers
 # 1 "src/basecosts.pnml" 1
-basecost {
-	PR_BUILD_VEHICLE_TRAIN : 	param_basecostbuy -1;
-	PR_BUILD_VEHICLE_WAGON: 	param_basecostbuy +3;
-	PR_RUNNING_TRAIN_STEAM: 	param_basecostrun +1;
-	PR_RUNNING_TRAIN_DIESEL:	param_basecostrun +1;
-	PR_RUNNING_TRAIN_ELECTRIC:	param_basecostrun +1;
-}
+//basecost {
+//	PR_BUILD_VEHICLE_TRAIN : 	param_basecostbuy -1;
+//	PR_BUILD_VEHICLE_WAGON: 	param_basecostbuy +3;
+//	PR_RUNNING_TRAIN_STEAM: 	param_basecostrun +1;
+//	PR_RUNNING_TRAIN_DIESEL:	param_basecostrun +1;
+//	PR_RUNNING_TRAIN_ELECTRIC:	param_basecostrun +1;
+//}
+
 # 1 "JPplusShinkansen.pnml" 4
 //#include "src/tracks.pnml"
 # 1 "src/railtypetable.pnml" 1
@@ -902,7 +966,19 @@ switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulat
 	1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
-
+/*	COST	*/
+if (param_running_cost == 1) {
+	param_running = 1;
+}
+if (param_running_cost == 2) {
+	param_running = 2;
+}	
+if (param_running_cost == 4) {
+	param_running = 4;
+}
+if (param_running_cost == 8) {
+	param_running = 8;
+}
 /*	CARGO DECAY	*/
 if (param_cargodecay == 0) {
 	param_decay_express = 256;
@@ -1112,7 +1188,7 @@ item(FEAT_TRAINS, mu_car_ms) {
         model_life:                   VEHICLE_NEVER_EXPIRES;
         vehicle_life:                 60;
         loading_speed:                0;
-        cost_factor:                  189;
+        cost_factor:                  189*param_purchase_cost;
         running_cost_factor:          6;
         speed:                        0 km/h;
         power:                        0 hp;
@@ -1121,7 +1197,7 @@ item(FEAT_TRAINS, mu_car_ms) {
         tractive_effort_coefficient:  0.3;
         air_drag_coefficient:         0;
         reliability_decay:            20;
-        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         cargo_age_period:             185;
         refit_cost:                   0;
         track_type:                   MINI_SHINKANSEN;
@@ -1185,7 +1261,7 @@ item(FEAT_TRAINS, mu_car_full) {
         model_life:                     VEHICLE_NEVER_EXPIRES;
         vehicle_life:                   60;
         loading_speed:                  0;
-        cost_factor:                    189;
+        cost_factor:                    189*param_purchase_cost;
         running_cost_factor:            18;
         speed:                          0 km/h;
         power:                          0 hp;
@@ -1194,7 +1270,7 @@ item(FEAT_TRAINS, mu_car_full) {
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
         reliability_decay:              20;
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         cargo_age_period:               185;
         refit_cost:                     0;
         track_type:                     SHINKANSEN;
@@ -1260,7 +1336,7 @@ item(FEAT_TRAINS, mu_car_maglev) {
         model_life:                     VEHICLE_NEVER_EXPIRES;
         vehicle_life:                   60;
         loading_speed:                  0;
-        cost_factor:                    189;
+        cost_factor:                    189*param_purchase_cost;
         running_cost_factor:            18;
         speed:                          0 km/h;
         power:                          0 hp;
@@ -1269,7 +1345,7 @@ item(FEAT_TRAINS, mu_car_maglev) {
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
         reliability_decay:              20;
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         cargo_age_period:               185;
         refit_cost:                     0;
         track_type:                     SC_MAGLEV;
@@ -1336,8 +1412,8 @@ item(FEAT_TRAINS, mu_car_mail) {
         model_life:                   VEHICLE_NEVER_EXPIRES;
         vehicle_life:                 60;
         loading_speed:                0;
-        cost_factor:                  189;
-        running_cost_factor:          18;
+        cost_factor:                  189*param_purchase_cost;
+        running_cost_factor:          18 * param_running_cost;
         speed:                        0 km/h;
         power:                        0 hp;
         cargo_capacity:               1;
@@ -1345,7 +1421,7 @@ item(FEAT_TRAINS, mu_car_mail) {
         tractive_effort_coefficient:  0.3;
         air_drag_coefficient:         0;
         reliability_decay:            20;
-        refittable_cargo_classes:     bitmask(CC_MAIL);
+        refittable_cargo_classes:     bitmask(CC_MAIL/2);
         cargo_age_period:             185;
         refit_cost:                   0;
         track_type:                   SHINKANSEN;
@@ -2308,9 +2384,9 @@ item(FEAT_TRAINS, series_0) {
         cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-        cost_factor:                    125;
-		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+        cost_factor:                    125 * param_purchase_cost;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -2526,8 +2602,8 @@ switch (FEAT_TRAINS, SELF, sw_922_series_stop_start, num_vehs_in_consist < 12) {
 
 /*---Running Cost Factor---*/
 switch (FEAT_TRAINS, PARENT, sw_922_series_running_cost_factor, param_dryellow ) {				
-		1: (150 + 60 * NumberCarsInConsist() ) * RunningCostFactor();		// Mail
-		2: (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();		// Passengers
+		1: (150 + 60 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;		// Mail
+		2: (300 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;		// Passengers
 		return 0;			
 	}
 
@@ -2557,7 +2633,7 @@ item(FEAT_TRAINS, series_922) {
         extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 		/* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
@@ -2592,7 +2668,7 @@ item(FEAT_TRAINS, series_922) {
         cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-        cost_factor:                    125;
+        cost_factor:                    125 * param_purchase_cost;
 		running_cost_factor:            0;
 		purchase_running_cost_factor:   0;
 	}
@@ -2630,7 +2706,7 @@ item(FEAT_TRAINS, series_922) {
         extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 		/* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_MAIL);
+		refittable_cargo_classes:       bitmask(CC_MAIL,CC_PASSENGERS);
 		refit_cost:                     0;
 		default_cargo_type:             MAIL;
 		cargo_capacity:                 1;							// 
@@ -2664,9 +2740,9 @@ item(FEAT_TRAINS, series_922) {
         cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-        cost_factor:                    125;
-		running_cost_factor:            sw_922_series_running_cost_factor;
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+        cost_factor:                    125 * param_purchase_cost;
+		running_cost_factor:            sw_922_series_running_cost_factor() * param_A / param_B * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * NumberCarsInConsist() * param_running_cost;
 	}
 	/*Multiple Unit Car*/
 	
@@ -2701,7 +2777,7 @@ item(FEAT_TRAINS, series_922) {
         extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 		/* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
@@ -2736,9 +2812,9 @@ item(FEAT_TRAINS, series_922) {
         cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-        cost_factor:                    125;
-		running_cost_factor:            sw_922_series_running_cost_factor;
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+        cost_factor:                    125 * param_purchase_cost;
+		running_cost_factor:            sw_922_series_running_cost_factor() * param_A / param_B * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -4606,7 +4682,7 @@ item(FEAT_TRAINS, series_n700) {
 		track_type:                     SHINKANSEN;
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -4614,7 +4690,7 @@ item(FEAT_TRAINS, series_n700) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// Default 185 x 1.5
 		/* Stats */
-		speed:                          301 km/h;				    // Overwritten by callback
+		speed:                          350 km/h;				    // Overwritten by callback
     	power:                          22900 kW;					// Overwritten by callback
 		weight:                         648 tons;					// Overwritten by callback
 		tractive_effort_coefficient:    0.3;
@@ -4639,9 +4715,9 @@ item(FEAT_TRAINS, series_n700) {
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
-		cost_factor:                    138;
-		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+		cost_factor:                    138 * param_purchase_cost;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -4681,7 +4757,7 @@ item(FEAT_TRAINS, series_n700a) {
 		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -4689,7 +4765,7 @@ item(FEAT_TRAINS, series_n700a) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// Default 185 x 1.5
 		/* Stats */
-		speed:                          301 km/h;				    // Overwritten by callback
+		speed:                          375 km/h;				    // Overwritten by callback
     	power:                          22900 kW;					// Overwritten by callback
 		weight:                         648 tons;					// Overwritten by callback
 		tractive_effort_coefficient:    0.3;
@@ -4714,9 +4790,9 @@ item(FEAT_TRAINS, series_n700a) {
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
-		cost_factor:                    138;
-		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+		cost_factor:                    138 * param_purchase_cost;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -4757,7 +4833,7 @@ item(FEAT_TRAINS, series_n700s) {
 		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -4765,7 +4841,7 @@ item(FEAT_TRAINS, series_n700s) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// Default 185 x 1.5
 		/* Stats */
-		speed:                          360 km/h;				    // Overwritten by callback
+		speed:                          395 km/h;				    // Overwritten by callback
     	power:                          22900 kW;					// Overwritten by callback
 		weight:                         648 tons;					// Overwritten by callback
 		tractive_effort_coefficient:    0.3;
@@ -4790,9 +4866,9 @@ item(FEAT_TRAINS, series_n700s) {
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
-		cost_factor:                    138;
-		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+		cost_factor:                    138 * param_purchase_cost;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -6347,7 +6423,7 @@ item(FEAT_TRAINS, series_700) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-        speed:                          286 km/h;				    // Operational Top Speed
+        speed:                          350 km/h;				    // Operational Top Speed
 		power:                          8050 kW;					// Overwritten by callback
 		weight:                         648 tons;					// Overwritten by callback
 		tractive_effort_coefficient:    0.3;
@@ -6373,9 +6449,9 @@ item(FEAT_TRAINS, series_700) {
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    134;
-		running_cost_factor:            (310 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   310 + 48 * NumberCarsInConsist();
+		cost_factor:                    134 * param_purchase_cost;
+		running_cost_factor:            (310 + 48 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   310 * param_running_cost + 48 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -6401,8 +6477,8 @@ item(FEAT_TRAINS, series_700) {
 
 	/*---Running Cost Factor---*/
 	switch (FEAT_TRAINS, PARENT, sw_923_series_running_cost_factor, param_dryellow ) {				
-		1: (150 + 60 * NumberCarsInConsist() ) * RunningCostFactor();		// Mail
-		2: (295 + 125 * NumberCarsInConsist() ) * RunningCostFactor();		// Passengers
+		1: (150 + 60 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;		// Mail
+		2: (295 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;		// Passengers
 		return 0;			
 	}
 
@@ -6427,13 +6503,13 @@ item(FEAT_TRAINS, series_700) {
 			extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 			/* Cargo */
 			reliability_decay:              5;
-			refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+			refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 			refit_cost:                     0;
 			cargo_capacity:                 1;							// Changed by callback
 			loading_speed:                  50;							
 			cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 			/* Stats */
-			speed:                          286 km/h;                   
+			speed:                          50 km/h;                   
 			power:                          8050 kW;					// Changed by callback
 			weight:                         648 ton;                   // Changed by callback					
 			tractive_effort_coefficient:    0.3;
@@ -6460,7 +6536,7 @@ item(FEAT_TRAINS, series_700) {
 			cargo_capacity:                 0;										// Nil capacity									
 			loading_speed:					25;	
 			cargo_age_period:				param_decay_express;
-			cost_factor:                    130;
+			cost_factor:                    130 * param_purchase_cost;
 			running_cost_factor:            0;
 			purchase_running_cost_factor:   0;
 
@@ -6497,7 +6573,7 @@ item(FEAT_TRAINS, series_700) {
 			extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 			/* Cargo */
 			reliability_decay:              5;
-			refittable_cargo_classes:       bitmask(CC_MAIL);
+			refittable_cargo_classes:       bitmask(CC_MAIL,CC_PASSENGERS);
 			default_cargo_type:             MAIL;
 			//refittable_cargo_classes:       bitmask(CC_PASSENGERS);
 			refit_cost:                     0;
@@ -6505,7 +6581,7 @@ item(FEAT_TRAINS, series_700) {
 			loading_speed:                  50;							
 			cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 			/* Stats */
-			speed:                          240 km/h;                   
+			speed:                          350 km/h;                   
 			power:                          8050 kW;					// Changed by callback
 			weight:                         1464 ton;                   // Changed by callback					
 			tractive_effort_coefficient:    0.3;
@@ -6530,9 +6606,9 @@ item(FEAT_TRAINS, series_700) {
 			cargo_capacity:                 40 * CapacityFactor();											
 			loading_speed:					40 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 			cargo_age_period:				param_decay_express;
-			cost_factor:                    130;
-			running_cost_factor:            sw_923_series_running_cost_factor;
-			purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
+			cost_factor:                    130 * param_purchase_cost;
+			running_cost_factor:            sw_923_series_running_cost_factor() * param_A / param_B * param_running_cost;
+			purchase_running_cost_factor:   295 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 		}
 		livery_override(mu_car_mail){
 			default:                        sw_923_series_graphics;
@@ -6565,7 +6641,7 @@ item(FEAT_TRAINS, series_700) {
 			extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 			/* Cargo */
 			reliability_decay:              5;
-			refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+			refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 			default_cargo_type:             PASS;
 			ai_special_flag:                AI_FLAG_PASSENGER;
 			//refittable_cargo_classes:       bitmask(CC_PASSENGERS);
@@ -6574,7 +6650,7 @@ item(FEAT_TRAINS, series_700) {
 			loading_speed:                  50;							
 			cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 			/* Stats */
-			speed:                          240 km/h;                   
+			speed:                          350 km/h;                   
 			power:                          8050 kW;					// Changed by callback
 			weight:                         1464 ton;                   // Changed by callback					
 			tractive_effort_coefficient:    0.3;
@@ -6599,9 +6675,9 @@ item(FEAT_TRAINS, series_700) {
 			cargo_capacity:                	26 * CapacityFactor();											
 			loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 			cargo_age_period:				param_decay_express;
-			cost_factor:                    130;
-			running_cost_factor:            sw_923_series_running_cost_factor;
-			purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
+			cost_factor:                    130 * param_purchase_cost;
+			running_cost_factor:            sw_923_series_running_cost_factor() * param_A / param_B * param_running_cost;
+			purchase_running_cost_factor:   295 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 		}
 		livery_override(mu_car_full){
 			default:                        sw_923_series_graphics;
@@ -8315,7 +8391,7 @@ item(FEAT_TRAINS, series_500) {
 		track_type:                     SHINKANSEN;
 		/* Cargo */
 		reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -8323,7 +8399,7 @@ item(FEAT_TRAINS, series_500) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          301 km/h;				
+		speed:                          310 km/h;				
 		power:                          18240 kW;	                // Changed by callback		
 		weight:                         42*16 tons;	                // Changed by callback			
 		tractive_effort_coefficient:    0.3;                        // Standard
@@ -8349,9 +8425,9 @@ item(FEAT_TRAINS, series_500) {
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    145;
-		running_cost_factor:            (303 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   303 + 127 * NumberCarsInConsist();	
+		cost_factor:                    145 * param_purchase_cost;
+		running_cost_factor:            (303 + 127 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   303 * param_running_cost + 127 * param_running_cost * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	
@@ -9022,7 +9098,7 @@ item(FEAT_TRAINS, series_300) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-        speed:                          271 km/h;					// Agreed to Wikipedia					
+        speed:                          310 km/h;					// Agreed to Wikipedia					
 		power:                          402*4*10 hp;            	// 300kw x 10 motorised cars x 4 per car				
 		weight:                         44*16 tons;	                // 44t (per JPS) x 16 cars				
 		tractive_effort_coefficient:    0.3;
@@ -9048,9 +9124,9 @@ item(FEAT_TRAINS, series_300) {
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    130;
-		running_cost_factor:            (305 + 124 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   305 + 124 * NumberCarsInConsist();		
+		cost_factor:                    130 * param_purchase_cost;
+		running_cost_factor:            (305 + 124 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   305 * param_running_cost + 124 * param_running_cost * NumberCarsInConsist();		
 	}
 	/*Multiple Unit Car*/
 	
@@ -10001,7 +10077,7 @@ item(FEAT_TRAINS, series_100) {
 		track_type:                     SHINKANSEN;
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -10036,9 +10112,9 @@ item(FEAT_TRAINS, series_100) {
 		cargo_capacity:                 27 * CapacityFactor();															
 		loading_speed:					27 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    132;
-		running_cost_factor:            (300 + 123 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 123 * NumberCarsInConsist();
+		cost_factor:                    132 * param_purchase_cost;
+		running_cost_factor:            (300 + 123 * NumberCarsInConsist() ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 123 * NumberCarsInConsist()* param_running_cost;
 		
 	}
 	/*Multiple Unit Car*/
@@ -10729,7 +10805,7 @@ item(FEAT_TRAINS, series_800) {
 		track_type:                     SHINKANSEN;
 		/* Cargo */
 		reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -10737,7 +10813,7 @@ item(FEAT_TRAINS, series_800) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          261 km/h;				
+		speed:                          330 km/h;				
 		power:                          9300 hp;					// 1550 hp (per JPS) x 6 cars					
 		weight:                         44 * 6 tons;				// 44t (per JPS) x 6 cars					
 		tractive_effort_coefficient:    0.3;
@@ -10763,9 +10839,9 @@ item(FEAT_TRAINS, series_800) {
 		cargo_capacity:                 22 * CapacityFactor();															
 		loading_speed:					22 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    121;
-		running_cost_factor:            (290 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   290 + 120 * NumberCarsInConsist();
+		cost_factor:                    121 * param_purchase_cost;
+		running_cost_factor:            (290 + 120 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   290 * param_running_cost + 120 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -11264,7 +11340,7 @@ item(FEAT_TRAINS, series_l0) {
 		track_type:                     SC_MAGLEV;
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
@@ -11272,7 +11348,7 @@ item(FEAT_TRAINS, series_l0) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-        speed:                          505 km/h;									
+        speed:                          605 km/h;									
 		power:                          800*4*10 hp;            			
 		weight:                         25 tons;	                			
 		tractive_effort_coefficient:    0.3;
@@ -11299,9 +11375,9 @@ item(FEAT_TRAINS, series_l0) {
 		purchase_cargo_capacity:		60 / 3 * CapacityFactor() ;													
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    260;
-		running_cost_factor:            (600 + 250 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   600 + 250 * NumberCarsInConsist();	
+		cost_factor:                    260 * param_purchase_cost;
+		running_cost_factor:            (600 + 250 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   600 * param_running_cost + 250 * param_running_cost * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	
@@ -12464,7 +12540,7 @@ item(FEAT_TRAINS, series_200) {
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    130;
-		running_cost_factor:            (295 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		running_cost_factor:            (295 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
 		purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
 		
 	}
@@ -12508,7 +12584,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
 		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 		/* Cargo */
 		reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -12543,9 +12619,9 @@ item(FEAT_TRAINS, series_200_sharknose) {
 		cargo_capacity:                 26 * CapacityFactor();										// 1230 capacity / (16 cars * 3 parts) is approx 26						
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    130;
-		running_cost_factor:            (295 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
+		cost_factor:                    130 * param_purchase_cost;
+		running_cost_factor:            (295 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   295 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/
@@ -12587,7 +12663,7 @@ item(FEAT_TRAINS, series_200_275) {
 		track_type:                     SHINKANSEN;
 		/* Cargo */
 		reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -12622,9 +12698,9 @@ item(FEAT_TRAINS, series_200_275) {
 		cargo_capacity:                 26 * CapacityFactor();										// 1230 capacity / (16 cars * 3 parts) is approx 26						
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    145;
-		running_cost_factor:            (300 + 130 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 130 * NumberCarsInConsist();
+		cost_factor:                    145 * param_purchase_cost;
+		running_cost_factor:            (300 + 130 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 130 * param_running_cost * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/
@@ -12944,9 +13020,9 @@ item(FEAT_TRAINS, series_400) {
         reliability_decay:              21;
         cargo_capacity:                 50;
         loading_speed:                  20;
-        cost_factor:                    175;
-        running_cost_factor:            120;
-        speed:                          240 km/h;
+        cost_factor:                    175 * param_purchase_cost;
+        running_cost_factor:            120 * param_running_cost;
+        speed:                          290 km/h;
         track_type:                     MINI_SHINKANSEN;
         power:                          4 * 280 hp;
         weight:                         42 ton;
@@ -12982,8 +13058,8 @@ item(FEAT_TRAINS, series_400) {
         weight:                         42 * num_vehs_in_consist;
         cargo_capacity:                 57 * CapacityFactor();							            // 399 / 7 = 57					
 		loading_speed:					57 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (445 + 125 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   (445 + 125 ) / 2;	
+        running_cost_factor:            (445 + 125 * num_vehs_in_consist * param_A / param_B/2 ) * RunningCostFactor() * param_running_cost;
+        purchase_running_cost_factor:   (445 + 125 ) / 2 * param_running_cost;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
@@ -13751,7 +13827,7 @@ item(FEAT_TRAINS, series_e1) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          241 km/h;					// Operational Top Speed
+		speed:                          271 km/h;					// Operational Top Speed
 		power:                          550 * 4 * 6 hp;					// 550 hp (or 410 kW) per motor x 4 motors per car x 6 motorised cars
 		weight:                         58 * 12 tons;					// 58t (per JPS) x 12 cars
 		tractive_effort_coefficient:    0.3;
@@ -13775,12 +13851,12 @@ item(FEAT_TRAINS, series_e1) {
 		length:                         sw_param_length;
 		power:							NumberCarsInConsist() / 2 * 550 * 4;	// 410 kW
 		weight:							NumberCarsInConsist() * 58;
-		cargo_capacity:                 34 * CapacityFactor();										// 1235 capacity / (12 cars * 3 parts) is approx 35						
+		cargo_capacity:                 43 * CapacityFactor();										// 1235 capacity / (12 cars * 3 parts) is approx 35						
 		loading_speed:					34 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    128;
-		running_cost_factor:            (295 + 122 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   295 + 122 * NumberCarsInConsist();
+		cost_factor:                    128 * param_purchase_cost;
+		running_cost_factor:            (295 + 122 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   295 * param_running_cost + 122 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -15142,9 +15218,9 @@ item(FEAT_TRAINS, series_e2) {
 		cargo_capacity:                 27 * CapacityFactor();										// 815 capacity / (10 cars * 3 parts) is approx 27						
 		loading_speed:					27 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    144;
-		running_cost_factor:            (290 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   290 + 120 * NumberCarsInConsist();	
+		cost_factor:                    144 * param_purchase_cost;
+		running_cost_factor:            (290 + 120 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   290 * param_running_cost + 120 * param_running_cost * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/
@@ -16187,8 +16263,8 @@ item(FEAT_TRAINS, series_e3) {
         reliability_decay:              21;
         cargo_capacity:                 50;
         loading_speed:                  20;
-        cost_factor:                    175;
-        running_cost_factor:            120;
+        cost_factor:                    175 * param_purchase_cost;
+        running_cost_factor:            120 * param_running_cost;
         speed:                          275 km/h;
         track_type:                     MINI_SHINKANSEN;
         power:                          400 * 4 hp;
@@ -16197,7 +16273,7 @@ item(FEAT_TRAINS, series_e3) {
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_2CC);
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
         //dual_headed:                    1;
@@ -16225,8 +16301,8 @@ item(FEAT_TRAINS, series_e3) {
         weight:                         43 * num_vehs_in_consist;
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  					
 		    loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (445 + 120 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   (445 + 120) / 2;	
+        running_cost_factor:            (445 + 120 * num_vehs_in_consist  * param_A / param_B/2) * RunningCostFactor() * param_running_cost;
+        purchase_running_cost_factor:   (445 + 120) / 2 * param_running_cost;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
@@ -16802,7 +16878,7 @@ item(FEAT_TRAINS, series_e4) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          241 km/h;					// Operational Top Speed
+		speed:                          275 km/h;					// Operational Top Speed
 		power:                          560 * 4 * 8 hp;				// Agreed to Wikipedia
 		weight:                         54 * 8 tons;				// Agreed to Wikipedia 
 		tractive_effort_coefficient:    0.3;
@@ -16825,12 +16901,12 @@ item(FEAT_TRAINS, series_e4) {
         length:                         sw_param_length;
 		power:							NumberCarsInConsist() / 2 * 563 * 4;	// 420 kW = 563 hp
 		weight:							NumberCarsInConsist() * 54;
-		cargo_capacity:                 35 * CapacityFactor();										// 817 capacity / (8 cars * 3 parts) is approx 35						
+		cargo_capacity:                 43 * CapacityFactor();										// 817 capacity / (8 cars * 3 parts) is approx 35						
 		loading_speed:					35 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    105;
-        running_cost_factor:            (295 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   295 + 120 * NumberCarsInConsist();
+		cost_factor:                    105 * param_purchase_cost;
+        running_cost_factor:            (295 + 120 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   295 * param_running_cost + 120 * param_running_cost * NumberCarsInConsist();
 	}
 
 	/*Multiple Unit Car*/
@@ -17316,7 +17392,7 @@ item(FEAT_TRAINS, series_e5) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          321 km/h;					// Operational Top Speed
+		speed:                          365 km/h;					// Operational Top Speed
 		power:                          1290 hp;					// Overwritten by callback
 		weight:                         45;
 		tractive_effort_coefficient:    0.3;
@@ -17342,9 +17418,9 @@ item(FEAT_TRAINS, series_e5) {
 		cargo_capacity:                 25 * CapacityFactor();										// 731 capacity / (10 cars * 3 parts) is approx 25						
 		loading_speed:					25 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    144;
-		running_cost_factor:            (298 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   298 + 127 * NumberCarsInConsist();	
+		cost_factor:                    144 * param_purchase_cost;
+		running_cost_factor:            (298 + 127 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   298 * param_running_cost + 127 * param_running_cost * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/
@@ -17633,10 +17709,10 @@ item(FEAT_TRAINS, series_e6, 2006) {
 
         cargo_capacity:                 50;
         loading_speed:                  20;
-        cost_factor:                    175;
-        running_cost_factor:            120;
+        cost_factor:                    175 * param_purchase_cost;
+        running_cost_factor:            120 * param_running_cost;
 
-        speed:                          321 km/h;
+        speed:                          365 km/h;
         track_type:                     MINI_SHINKANSEN;
         power:                          400 * 4 hp;
         weight:                         42 ton;
@@ -17676,8 +17752,8 @@ item(FEAT_TRAINS, series_e6, 2006) {
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
         cargo_age_period:				        param_decay_express;
-        running_cost_factor:            (450 + 127 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   (450 + 127) / 2;
+        running_cost_factor:            (450 + 127 * num_vehs_in_consist  * param_A / param_B/2) * RunningCostFactor() * param_running_cost;
+        purchase_running_cost_factor:   (450 + 127) / 2 * param_running_cost;
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
@@ -18042,7 +18118,7 @@ item(FEAT_TRAINS, series_e7) {
 		track_type:                     SHINKANSEN;
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -18050,7 +18126,7 @@ item(FEAT_TRAINS, series_e7) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-        speed:                          275 km/h;				    // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen
+        speed:                          321 km/h;				    // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen
 		power:                          12000 kW;                   // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen					
 		weight:                         540 tons;	                // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen				
 		tractive_effort_coefficient:    0.3;
@@ -18076,9 +18152,9 @@ item(FEAT_TRAINS, series_e7) {
 		cargo_capacity:                 26 * CapacityFactor();										// 934 capacity / (12 cars * 3 parts) is approx 26						
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    130;
-		running_cost_factor:            (295 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   295 + 120 * NumberCarsInConsist();	
+		cost_factor:                    130 * param_purchase_cost;
+		running_cost_factor:            (295 + 120 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   295 * param_running_cost + 120 * param_running_cost * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/
@@ -18366,9 +18442,9 @@ item(FEAT_TRAINS, series_e8) {
         reliability_decay:              21;
         cargo_capacity:                 50;
         loading_speed:                  20;
-        cost_factor:                    175;
-        running_cost_factor:            120;
-        speed:                          300 km/h;
+        cost_factor:                    175 * param_purchase_cost;
+        running_cost_factor:            120 * param_running_cost;
+        speed:                          395 km/h;
         track_type:                     MINI_SHINKANSEN;
         power:                          400 * 4 hp;
         weight:                         42 ton;
@@ -18376,7 +18452,7 @@ item(FEAT_TRAINS, series_e8) {
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC);
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
         //dual_headed:                    1;
@@ -18405,8 +18481,8 @@ item(FEAT_TRAINS, series_e8) {
         weight:                         42 * num_vehs_in_consist;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (445 + 130 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   (445 + 130) / 2; 	
+        running_cost_factor:            (445 + 130 * num_vehs_in_consist * param_A / param_B/2 ) * RunningCostFactor() * param_running_cost;
+        purchase_running_cost_factor:   (445 + 130) / 2 * param_running_cost; 	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
@@ -22160,7 +22236,7 @@ item(FEAT_TRAINS, series_e5e6_irl) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          321 km/h;					// Operational Top Speed
+		speed:                          350 km/h;					// Operational Top Speed
 		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
 		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
 		tractive_effort_coefficient:    0.3;
@@ -22182,9 +22258,9 @@ item(FEAT_TRAINS, series_e5e6_irl) {
 		cargo_capacity:                 15 * CapacityFactor();
 		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    144;
-		running_cost_factor:            (298 + 127 * 17 ) * RunningCostFactor();
-		purchase_running_cost_factor:   298 + 127 * 17;	
+		cost_factor:                    144 * param_purchase_cost;
+		running_cost_factor:            (298 + 127 * 17/2 * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   298 * param_running_cost + 127 * 17 * param_running_cost;	
 	}
 }
 # 1 "src/trains/e5e6_series/e5e6_series.pnml" 2

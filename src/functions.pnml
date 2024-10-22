@@ -20,7 +20,19 @@ switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulat
 	1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
-
+/*	COST	*/
+if (param_running_cost == 1) {
+	param_running = 1;
+}
+if (param_running_cost == 2) {
+	param_running = 2;
+}	
+if (param_running_cost == 4) {
+	param_running = 4;
+}
+if (param_running_cost == 8) {
+	param_running = 8;
+}
 /*	CARGO DECAY	*/
 if (param_cargodecay == 0) {
 	param_decay_express = 256;

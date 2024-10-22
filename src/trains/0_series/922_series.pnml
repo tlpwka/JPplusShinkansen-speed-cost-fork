@@ -195,8 +195,8 @@ switch (FEAT_TRAINS, SELF, sw_922_series_stop_start, num_vehs_in_consist < 12) {
 
 /*---Running Cost Factor---*/
 switch (FEAT_TRAINS, PARENT, sw_922_series_running_cost_factor, param_dryellow ) {				
-		1: (150 + 60 * NumberCarsInConsist() ) * RunningCostFactor();		// Mail
-		2: (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();		// Passengers
+		1: (150 + 60 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;		// Mail
+		2: (300 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;		// Passengers
 		return 0;			
 	}
 
@@ -226,7 +226,7 @@ item(FEAT_TRAINS, series_922) {
         extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 		/* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
@@ -261,7 +261,7 @@ item(FEAT_TRAINS, series_922) {
         cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-        cost_factor:                    125;
+        cost_factor:                    125 * param_purchase_cost;
 		running_cost_factor:            0;
 		purchase_running_cost_factor:   0;
 	}
@@ -299,7 +299,7 @@ item(FEAT_TRAINS, series_922) {
         extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 		/* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_MAIL);
+		refittable_cargo_classes:       bitmask(CC_MAIL,CC_PASSENGERS);
 		refit_cost:                     0;
 		default_cargo_type:             MAIL;
 		cargo_capacity:                 1;							// 
@@ -333,9 +333,9 @@ item(FEAT_TRAINS, series_922) {
         cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-        cost_factor:                    125;
-		running_cost_factor:            sw_922_series_running_cost_factor;
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+        cost_factor:                    125 * param_purchase_cost;
+		running_cost_factor:            sw_922_series_running_cost_factor() * param_A / param_B * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * NumberCarsInConsist() * param_running_cost;
 	}
 	/*Multiple Unit Car*/
 	
@@ -370,7 +370,7 @@ item(FEAT_TRAINS, series_922) {
         extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
 		/* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
@@ -405,9 +405,9 @@ item(FEAT_TRAINS, series_922) {
         cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-        cost_factor:                    125;
-		running_cost_factor:            sw_922_series_running_cost_factor;
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+        cost_factor:                    125 * param_purchase_cost;
+		running_cost_factor:            sw_922_series_running_cost_factor() * param_A / param_B * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	

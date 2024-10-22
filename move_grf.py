@@ -2,7 +2,7 @@
 newgrf_name = "JPplusShinkansen" + ".grf"
 
 # Do you want to copy the completed NewGRF to your OpenTTD folder? (True/False)
-copy_bool = True
+copy_bool = False
 
 # What is the path of your OpenTTD folder?
 openttd_path = "/home/john/.local/share/openttd/newgrf"

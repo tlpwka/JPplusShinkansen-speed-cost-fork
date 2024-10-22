@@ -15,6 +15,20 @@ STR_GRF_NAME        :JP+ 新干线 {VERSION}
 STR_GRF_DESC        :{WHITE}JP{RED}+{WHITE} 新干线{}{}JP{RED}+{WHITE}新干线{BLACK}专门做的就是，您应该已经门儿清了，新干线！本包中的列车需要高速铁道。{}本包是{WHITE}JP{RED}+{WHITE} 动车组（{WHITE}JP{RED}+{WHITE} MUs）{BLACK}、{WHITE}JP{RED}+ {WHITE}机车与车厢{BLACK}与{WHITE}JP{RED}+ {WHITE}主要私铁（{WHITE}JP{RED}+{WHITE} Major Private Companies）{BLACK}的姊妹拓展包。{}{}{BLACK}{COPYRIGHT}JP+ 新干线{}许可证：GPLv2{}{BLACK}{}程序：{}{LTBLUE}KeepinItRail{}{}{BLACK}图像：{}{GREEN}KeepinItRail, Yozora, Azusa, Erato{}{}{BLACK}翻译：{}{GREEN}freeaim (Japanese){}Yozora (Russian){}CoconutKR (Korean){}{}{TINYFONT}{BLACK}特别感谢：{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
 
 # Parameters
+STR_PARAM_PURCHASE_COST             :Purchase cost multiplier
+STR_PARAM_PURCHASE_COST_DESC        :You can use this setting to increase or decrease the purchase costs of the vehicles in this set.
+STR_PARAM_RUNNING_COST              :Running cost multiplier
+STR_PARAM_RUNNING_COST_DESC         :You can use this setting to increase or decrease the running costs of the vehicles in this set.
+
+STR_PARAM_DIVIDE_16                 :1/16
+STR_PARAM_DIVIDE_8                  :1/8
+STR_PARAM_DIVIDE_4                  :1/4
+STR_PARAM_DIVIDE_2                  :1/2
+STR_PARAM_NORMAL_1                    :1 (default)
+STR_PARAM_TIMES_2                   :2
+STR_PARAM_TIMES_4                   :4
+STR_PARAM_TIMES_8                   :8
+STR_PARAM_TIMES_16                  :16
 STR_NO                              :否
 STR_YES                             :是
 STR_PARAM_NORMAL                    :普通

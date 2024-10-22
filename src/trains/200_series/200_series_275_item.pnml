@@ -21,7 +21,7 @@ item(FEAT_TRAINS, series_200_275) {
 		track_type:                     SHINKANSEN;
 		/* Cargo */
 		reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -56,9 +56,9 @@ item(FEAT_TRAINS, series_200_275) {
 		cargo_capacity:                 26 * CapacityFactor();										// 1230 capacity / (16 cars * 3 parts) is approx 26						
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    145;
-		running_cost_factor:            (300 + 130 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 130 * NumberCarsInConsist();
+		cost_factor:                    145 * param_purchase_cost;
+		running_cost_factor:            (300 + 130 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 130 * param_running_cost * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/

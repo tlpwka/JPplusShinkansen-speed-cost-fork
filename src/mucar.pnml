@@ -15,7 +15,7 @@ item(FEAT_TRAINS, mu_car_ms) {
         model_life:                   VEHICLE_NEVER_EXPIRES;
         vehicle_life:                 60;
         loading_speed:                0;
-        cost_factor:                  189;
+        cost_factor:                  189*param_purchase_cost;
         running_cost_factor:          6;
         speed:                        0 km/h;
         power:                        0 hp;
@@ -24,7 +24,7 @@ item(FEAT_TRAINS, mu_car_ms) {
         tractive_effort_coefficient:  0.3;
         air_drag_coefficient:         0;
         reliability_decay:            20;
-        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:     bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         cargo_age_period:             185;
         refit_cost:                   0;
         track_type:                   MINI_SHINKANSEN;
@@ -88,7 +88,7 @@ item(FEAT_TRAINS, mu_car_full) {
         model_life:                     VEHICLE_NEVER_EXPIRES;
         vehicle_life:                   60;
         loading_speed:                  0;
-        cost_factor:                    189;
+        cost_factor:                    189*param_purchase_cost;
         running_cost_factor:            18;
         speed:                          0 km/h;
         power:                          0 hp;
@@ -97,7 +97,7 @@ item(FEAT_TRAINS, mu_car_full) {
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
         reliability_decay:              20;
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         cargo_age_period:               185;
         refit_cost:                     0;
         track_type:                     SHINKANSEN;
@@ -163,7 +163,7 @@ item(FEAT_TRAINS, mu_car_maglev) {
         model_life:                     VEHICLE_NEVER_EXPIRES;
         vehicle_life:                   60;
         loading_speed:                  0;
-        cost_factor:                    189;
+        cost_factor:                    189*param_purchase_cost;
         running_cost_factor:            18;
         speed:                          0 km/h;
         power:                          0 hp;
@@ -172,7 +172,7 @@ item(FEAT_TRAINS, mu_car_maglev) {
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
         reliability_decay:              20;
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
         cargo_age_period:               185;
         refit_cost:                     0;
         track_type:                     SC_MAGLEV;
@@ -239,8 +239,8 @@ item(FEAT_TRAINS, mu_car_mail) {
         model_life:                   VEHICLE_NEVER_EXPIRES;
         vehicle_life:                 60;
         loading_speed:                0;
-        cost_factor:                  189;
-        running_cost_factor:          18;
+        cost_factor:                  189*param_purchase_cost;
+        running_cost_factor:          18 * param_running_cost;
         speed:                        0 km/h;
         power:                        0 hp;
         cargo_capacity:               1;
@@ -248,7 +248,7 @@ item(FEAT_TRAINS, mu_car_mail) {
         tractive_effort_coefficient:  0.3;
         air_drag_coefficient:         0;
         reliability_decay:            20;
-        refittable_cargo_classes:     bitmask(CC_MAIL);
+        refittable_cargo_classes:     bitmask(CC_MAIL/2);
         cargo_age_period:             185;
         refit_cost:                   0;
         track_type:                   SHINKANSEN;

@@ -35,7 +35,7 @@ item(FEAT_TRAINS, series_e7) {
 		track_type:                     SHINKANSEN;
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -43,7 +43,7 @@ item(FEAT_TRAINS, series_e7) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-        speed:                          275 km/h;				    // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen
+        speed:                          321 km/h;				    // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen
 		power:                          12000 kW;                   // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen					
 		weight:                         540 tons;	                // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen				
 		tractive_effort_coefficient:    0.3;
@@ -69,9 +69,9 @@ item(FEAT_TRAINS, series_e7) {
 		cargo_capacity:                 26 * CapacityFactor();										// 934 capacity / (12 cars * 3 parts) is approx 26						
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    130;
-		running_cost_factor:            (295 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   295 + 120 * NumberCarsInConsist();	
+		cost_factor:                    130 * param_purchase_cost;
+		running_cost_factor:            (295 + 120 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   295 * param_running_cost + 120 * param_running_cost * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/

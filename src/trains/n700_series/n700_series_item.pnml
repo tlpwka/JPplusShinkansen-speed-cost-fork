@@ -21,7 +21,7 @@ item(FEAT_TRAINS, series_n700) {
 		track_type:                     SHINKANSEN;
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -29,7 +29,7 @@ item(FEAT_TRAINS, series_n700) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// Default 185 x 1.5
 		/* Stats */
-		speed:                          301 km/h;				    // Overwritten by callback
+		speed:                          350 km/h;				    // Overwritten by callback
     	power:                          22900 kW;					// Overwritten by callback
 		weight:                         648 tons;					// Overwritten by callback
 		tractive_effort_coefficient:    0.3;
@@ -54,9 +54,9 @@ item(FEAT_TRAINS, series_n700) {
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
-		cost_factor:                    138;
-		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+		cost_factor:                    138 * param_purchase_cost;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -96,7 +96,7 @@ item(FEAT_TRAINS, series_n700a) {
 		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -104,7 +104,7 @@ item(FEAT_TRAINS, series_n700a) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// Default 185 x 1.5
 		/* Stats */
-		speed:                          301 km/h;				    // Overwritten by callback
+		speed:                          375 km/h;				    // Overwritten by callback
     	power:                          22900 kW;					// Overwritten by callback
 		weight:                         648 tons;					// Overwritten by callback
 		tractive_effort_coefficient:    0.3;
@@ -129,9 +129,9 @@ item(FEAT_TRAINS, series_n700a) {
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
-		cost_factor:                    138;
-		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+		cost_factor:                    138 * param_purchase_cost;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -172,7 +172,7 @@ item(FEAT_TRAINS, series_n700s) {
 		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
         /* Cargo */
         reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS,CC_MAIL,CC_ARMOURED);
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -180,7 +180,7 @@ item(FEAT_TRAINS, series_n700s) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// Default 185 x 1.5
 		/* Stats */
-		speed:                          360 km/h;				    // Overwritten by callback
+		speed:                          395 km/h;				    // Overwritten by callback
     	power:                          22900 kW;					// Overwritten by callback
 		weight:                         648 tons;					// Overwritten by callback
 		tractive_effort_coefficient:    0.3;
@@ -205,9 +205,9 @@ item(FEAT_TRAINS, series_n700s) {
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
-		cost_factor:                    138;
-		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+		cost_factor:                    138 * param_purchase_cost;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 125 * param_running_cost * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	

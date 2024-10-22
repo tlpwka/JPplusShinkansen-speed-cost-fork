@@ -7,6 +7,25 @@ STR_GRF_NAME        :{TITLE} {VERSION}
 STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}Shinkansen{}{}JP{RED}+{WHITE}Shinkansen{BLACK} focuses on, you guessed it, Shinkansen! Trains require high speed rail tracks.{}Sister set to {WHITE}JP{RED}+{WHITE}MUs {BLACK}, {WHITE}JP{RED}+ {WHITE}Engines & Wagons {BLACK}and {WHITE}JP{RED}+ {WHITE}Major Private Companies{}{}{BLACK}{COPYRIGHT}JP+Shinkansen{}Licence: GPLv2{}{BLACK}{}Coded By{}{LTBLUE}KeepinItRail{}{}{BLACK}Sprites By{}{GREEN}KeepinItRail, Yozora, Azusa & Erato{}{}{BLACK}Translations By{}{GREEN}freeaim (Japanese){}Yozora (Russian){}CoconutKR (Korean){}{}{TINYFONT}{BLACK}Thanks To{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
 
 # Parameters
+STR_PARAM_A			:Running cost multiplier in formula
+STR_PARAM_A_DESC		:multiplier in formula for cars
+STR_PARAM_B			:Running cost divider in formula
+STR_PARAM_B_DESC		:divider in formula for cars
+STR_PARAM_PURCHASE_COST             :Purchase cost multiplier
+STR_PARAM_PURCHASE_COST_DESC        :You can use this setting to increase or decrease the purchase costs of the vehicles in this set.
+STR_PARAM_RUNNING_COST              :Running cost multiplier
+STR_PARAM_RUNNING_COST_DESC         :You can use this setting to increase or decrease the running costs of the vehicles in this set.
+
+STR_PARAM_DIVIDE_16                 :1/16
+STR_PARAM_DIVIDE_8                  :1/8
+STR_PARAM_DIVIDE_4                  :1/4
+STR_PARAM_DIVIDE_2                  :1/2
+STR_PARAM_NORMAL_1                    :1 (default)
+STR_PARAM_TIMES_2                   :2
+STR_PARAM_TIMES_4                   :4
+STR_PARAM_TIMES_8                   :8
+STR_PARAM_TIMES_16                  :16
+
 STR_NO                              :No
 STR_YES                             :Yes
 STR_PARAM_NORMAL                    :Normal
