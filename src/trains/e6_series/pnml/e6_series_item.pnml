@@ -17,7 +17,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
         cost_factor:                    175 * param_purchase_cost;
         running_cost_factor:            120 * param_running_cost;
 
-        speed:                          365 km/h;
+        speed:                          370 km/h;
         track_type:                     MINI_SHINKANSEN;
         power:                          400 * 4 hp;
         weight:                         42 ton;

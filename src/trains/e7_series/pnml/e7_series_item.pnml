@@ -43,7 +43,7 @@ item(FEAT_TRAINS, series_e7) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-        speed:                          321 km/h;				    // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen
+        speed:                          370 km/h;				    // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen
 		power:                          12000 kW;                   // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen					
 		weight:                         540 tons;	                // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen				
 		tractive_effort_coefficient:    0.3;
