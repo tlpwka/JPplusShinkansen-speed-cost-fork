@@ -4814,6 +4814,11 @@ switch (FEAT_TRAINS, SELF, sw_n700s_series_articulated_part, extra_callback_info
 		1 .. 2: return series_n700s;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_n700s_series_speed, current_year) {
+	    0..2030: return 388;                        // Until 2026, Speed = 390 km/h
+	    return 502;                                 // After 2026, Speed = 504 km/h
+    }
 
 item(FEAT_TRAINS, series_n700s) {
 	property {
@@ -4864,6 +4869,7 @@ item(FEAT_TRAINS, series_n700s) {
         length:                         sw_param_length;
         weight:                         NumberCarsInConsist() * 44;
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
+	speed:							sw_n700s_series_speed;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cost_factor:                    138 * param_purchase_cost;
@@ -6474,6 +6480,11 @@ item(FEAT_TRAINS, series_700) {
 		1 .. 2: return series_923;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 		}
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_n700m_series_speed, current_year) {
+	    0..2030: return 388;                        // Until 2026, Speed = 350 km/h
+	    return 502;                                 // After 2026, Speed = 504 km/h
+    }	
 
 	/*---Running Cost Factor---*/
 	switch (FEAT_TRAINS, PARENT, sw_923_series_running_cost_factor, param_dryellow ) {				
@@ -6602,6 +6613,7 @@ item(FEAT_TRAINS, series_700) {
 			length:                         sw_param_length;
 			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
 			weight:							NumberCarsInConsist() * 44;
+			speed:							sw_n700m_series_speed;
 			//speed:						240 km/h;
 			cargo_capacity:                 40 * CapacityFactor();											
 			loading_speed:					40 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
@@ -6671,6 +6683,7 @@ item(FEAT_TRAINS, series_700) {
 			length:                         sw_param_length;
 			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
 			weight:							NumberCarsInConsist() * 44;
+			speed:							sw_n700m_series_speed;
 			//speed:						240 km/h;
 			cargo_capacity:                	26 * CapacityFactor();											
 			loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
@@ -17367,6 +17380,12 @@ switch (FEAT_TRAINS, SELF, sw_e5_series_stop_start, num_vehs_in_consist < 12) {
 		1:  return string(STR_LENGTH_ERROR); 				
 		return CB_RESULT_NO_TEXT; 
 	}
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e5_series_speed, current_year) {
+	    0..2030: return 388;                        // Until 2025, Speed = 370 km/h
+	    return 502;                                 // After 2025, Speed = 504 km/h
+    }
+	
 
 item(FEAT_TRAINS, series_e5) {
 	property {
@@ -17392,7 +17411,7 @@ item(FEAT_TRAINS, series_e5) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          365 km/h;					// Operational Top Speed
+		speed:                          370 km/h;					// Operational Top Speed
 		power:                          1290 hp;					// Overwritten by callback
 		weight:                         45;
 		tractive_effort_coefficient:    0.3;
@@ -17414,6 +17433,7 @@ item(FEAT_TRAINS, series_e5) {
 		/* Stats */
 		length:                         sw_param_length;
 		power:							max ((NumberCarsInConsist() - 2 ),0) * 402 * 4 ;
+		speed:							sw_e5_series_speed;
 		weight:							NumberCarsInConsist() * 45;
 		cargo_capacity:                 25 * CapacityFactor();										// 731 capacity / (10 cars * 3 parts) is approx 25						
 		loading_speed:					25 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
@@ -17698,6 +17718,11 @@ switch(FEAT_TRAINS, SELF, sw_e6_series_attach_vehid, [vehicle_type_id == series_
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e6_series_speed, current_year) {
+	    0..2030: return 368;                        // Until 2026, Speed = 390 km/h
+	    return 502;                                 // After 2026, Speed = 504 km/h
+    }
 
 item(FEAT_TRAINS, series_e6, 2006) {
     property {
@@ -17748,6 +17773,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
         purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
+        speed:							sw_e6_series_speed;
         weight:                         42 * num_vehs_in_consist;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
@@ -18431,6 +18457,12 @@ switch(FEAT_TRAINS, PARENT, sw_e8_series_pant2b, cargo_subtype) {
 switch(FEAT_TRAINS, SELF, sw_e8_series_attach_vehid, [vehicle_type_id == series_e8 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
 }
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e8_series_speed, current_year) {
+	    0..2030: return 388;                        // Until 2024, Speed = 390 km/h
+	    return 502;                                 // After 2024, Speed = 504 km/h
+    }
+
 /*---END OF SECTION---*/
 
 item(FEAT_TRAINS, series_e8) {
@@ -18478,6 +18510,7 @@ item(FEAT_TRAINS, series_e8) {
         purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
+	speed:							sw_e8_series_speed;
         weight:                         42 * num_vehs_in_consist;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
@@ -22236,7 +22269,7 @@ item(FEAT_TRAINS, series_e5e6_irl) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          350 km/h;					// Operational Top Speed
+		speed:                          370 km/h;					// Operational Top Speed
 		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
 		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
 		tractive_effort_coefficient:    0.3;

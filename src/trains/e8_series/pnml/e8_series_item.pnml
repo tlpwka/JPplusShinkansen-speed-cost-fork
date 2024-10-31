@@ -3,6 +3,12 @@
 switch(FEAT_TRAINS, SELF, sw_e8_series_attach_vehid, [vehicle_type_id == series_e8 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
 }
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e8_series_speed, current_year) {
+	    0..2030: return 388;                        // Until 2024, Speed = 390 km/h
+	    return 502;                                 // After 2024, Speed = 504 km/h
+    }
+
 /*---END OF SECTION---*/
 
 item(FEAT_TRAINS, series_e8) {
@@ -50,6 +56,7 @@ item(FEAT_TRAINS, series_e8) {
         purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
+	speed:							sw_e8_series_speed;
         weight:                         42 * num_vehs_in_consist;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor

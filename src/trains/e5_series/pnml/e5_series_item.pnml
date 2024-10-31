@@ -20,6 +20,12 @@ switch (FEAT_TRAINS, SELF, sw_e5_series_stop_start, num_vehs_in_consist < 12) {
 		1:  return string(STR_LENGTH_ERROR); 				
 		return CB_RESULT_NO_TEXT; 
 	}
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e5_series_speed, current_year) {
+	    0..2030: return 388;                        // Until 2025, Speed = 370 km/h
+	    return 502;                                 // After 2025, Speed = 504 km/h
+    }
+	
 
 item(FEAT_TRAINS, series_e5) {
 	property {
@@ -45,7 +51,7 @@ item(FEAT_TRAINS, series_e5) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          365 km/h;					// Operational Top Speed
+		speed:                          370 km/h;					// Operational Top Speed
 		power:                          1290 hp;					// Overwritten by callback
 		weight:                         45;
 		tractive_effort_coefficient:    0.3;
@@ -67,6 +73,7 @@ item(FEAT_TRAINS, series_e5) {
 		/* Stats */
 		length:                         sw_param_length;
 		power:							max ((NumberCarsInConsist() - 2 ),0) * 402 * 4 ;
+		speed:							sw_e5_series_speed;
 		weight:							NumberCarsInConsist() * 45;
 		cargo_capacity:                 25 * CapacityFactor();										// 731 capacity / (10 cars * 3 parts) is approx 25						
 		loading_speed:					25 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor

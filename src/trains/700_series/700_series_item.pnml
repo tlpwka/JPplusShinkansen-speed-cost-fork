@@ -80,6 +80,11 @@ item(FEAT_TRAINS, series_700) {
 		1 .. 2: return series_923;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 		}
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_n700m_series_speed, current_year) {
+	    0..2030: return 388;                        // Until 2026, Speed = 350 km/h
+	    return 502;                                 // After 2026, Speed = 504 km/h
+    }	
 
 	/*---Running Cost Factor---*/
 	switch (FEAT_TRAINS, PARENT, sw_923_series_running_cost_factor, param_dryellow ) {				
@@ -208,6 +213,7 @@ item(FEAT_TRAINS, series_700) {
 			length:                         sw_param_length;
 			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
 			weight:							NumberCarsInConsist() * 44;
+			speed:							sw_n700m_series_speed;
 			//speed:						240 km/h;
 			cargo_capacity:                 40 * CapacityFactor();											
 			loading_speed:					40 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
@@ -277,6 +283,7 @@ item(FEAT_TRAINS, series_700) {
 			length:                         sw_param_length;
 			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
 			weight:							NumberCarsInConsist() * 44;
+			speed:							sw_n700m_series_speed;
 			//speed:						240 km/h;
 			cargo_capacity:                	26 * CapacityFactor();											
 			loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
