@@ -4819,7 +4819,9 @@ switch (FEAT_TRAINS, SELF, sw_n700s_series_articulated_part, extra_callback_info
 	    0..2030: return 388;                        // Until 2026, Speed = 390 km/h
 	    return 502;                                 // After 2026, Speed = 504 km/h
     }
-
+switch(FEAT_TRAINS, SELF, sw_n700s_series_attach_vehid, [vehicle_type_id == series_n700s || vehicle_type_id == mu_car_full]) {
+ 0: return string(MU_UNIQUE);
+ }
 item(FEAT_TRAINS, series_n700s) {
 	property {
 		/* Menu */
@@ -4856,10 +4858,10 @@ item(FEAT_TRAINS, series_n700s) {
 		/* Menu */
         additional_text:                string(STR_DESC_N700S_SERIES);
 		cargo_subtype_text:             sw_n700s_series_subtype_text;
-		can_attach_wagon:				sw_attach_mu_car_full;
+		can_attach_wagon:				sw_n700s_series_attach_vehid;
 		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                44;
-        purchase_power:                 409 * 4;
+        purchase_power:                 609 * 4;
         /* Graphics */
         default:                        sw_n700s_series_graphics;
 		purchase:                       sw_n700s_series_purchase;
@@ -4868,7 +4870,7 @@ item(FEAT_TRAINS, series_n700s) {
         /* Stats */
         length:                         sw_param_length;
         weight:                         NumberCarsInConsist() * 44;
-        power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
+        power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 609 * 4;
 	speed:							sw_n700s_series_speed;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
@@ -6485,7 +6487,9 @@ item(FEAT_TRAINS, series_700) {
 	    0..2030: return 388;                        // Until 2026, Speed = 350 km/h
 	    return 502;                                 // After 2026, Speed = 504 km/h
     }	
-
+switch(FEAT_TRAINS, SELF, sw_n700m_series_attach_vehid, [vehicle_type_id == series_923 || vehicle_type_id == mu_car_mail || vehicle_type_id == mu_car_full]) {
+ 0: return string(MU_UNIQUE);
+ }
 	/*---Running Cost Factor---*/
 	switch (FEAT_TRAINS, PARENT, sw_923_series_running_cost_factor, param_dryellow ) {				
 		1: (150 + 60 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;		// Mail
@@ -6530,7 +6534,7 @@ item(FEAT_TRAINS, series_700) {
 			/* Menu */
 			additional_text:                string(STR_DESC_923_SERIES_GIMMICK);
 			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
-			can_attach_wagon:				sw_attach_mu_car_full;
+			can_attach_wagon:				sw_n700m_series_attach_vehid;
 			start_stop:						sw_stop_start_full_length_4;
 			purchase_weight:                44;
 			purchase_power:                 369 * 4;
@@ -6602,7 +6606,7 @@ item(FEAT_TRAINS, series_700) {
 			/* Menu */
 			additional_text:                string(STR_DESC_923_SERIES_MAIL);
 			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
-			can_attach_wagon:				sw_attach_mu_car_mail;
+			can_attach_wagon:				sw_n700m_series_attach_vehid;
 			start_stop:						sw_stop_start_full_length_4;
 			/* Graphics */
 			default:                        sw_923_series_graphics;
@@ -6672,7 +6676,7 @@ item(FEAT_TRAINS, series_700) {
 			/* Menu */
 			additional_text:                string(STR_DESC_923_SERIES);
 			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
-			can_attach_wagon:				sw_attach_mu_car_full;
+			can_attach_wagon:				sw_n700m_series_attach_vehid;
 			start_stop:						sw_stop_start_full_length_4;
 			/* Graphics */
 			default:                        sw_923_series_graphics;
@@ -11324,18 +11328,21 @@ switch (FEAT_TRAINS, SELF, sw_l0_series_articulated_part, extra_callback_info1) 
 		1 .. 2: return series_l0;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
-
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_l0_series_speed, current_year) {
+	    0..2031: return 601;                        // Until 2024, Speed = 603 km/h
+	    return 813;                                 // After 2024, Speed = 815 km/h
+}
 /*---Cargo Capacity---*/
 switch (FEAT_TRAINS, SELF, sw_l0_series_cargo_capacity_levels, position_in_consist == 1 || position_in_consist_from_end == 1 ) {				
-		1:  return 24 * CapacityFactor();		
-		return 60 * CapacityFactor();
+		1:  return 40 * CapacityFactor();		
+		return 75 * CapacityFactor();
 	}
 
 switch (FEAT_TRAINS, SELF, sw_l0_series_cargo_capacity, position_in_consist % 3) {				
 		1:  sw_l0_series_cargo_capacity_levels; 				
 		return 0;
 	}
-
 
 item(FEAT_TRAINS, series_l0) {
 	property {
@@ -11360,9 +11367,9 @@ item(FEAT_TRAINS, series_l0) {
 		cargo_capacity:                 1;							// 
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
-		/* Stats */
-        speed:                          605 km/h;									
-		power:                          800*4*10 hp;            			
+		/* Stats */							
+		power:                          800*4*10 hp;
+		speed:				601 km/h;            			
 		weight:                         25 tons;	                			
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
@@ -11383,14 +11390,15 @@ item(FEAT_TRAINS, series_l0) {
         /* Stats */
         length:                         sw_param_length;
         power:                          (( NumberCarsInConsist() / 2 ) + 2 ) * 400 * 4;	
+	speed:							sw_l0_series_speed;        
         weight:                         NumberCarsInConsist() * 25;									// https://linear-chuo-shinkansen.jr-central.co.jp/about/design/
 		cargo_capacity:                 sw_l0_series_cargo_capacity();
-		purchase_cargo_capacity:		60 / 3 * CapacityFactor() ;													
+		purchase_cargo_capacity:		75 / 3 * CapacityFactor() ;													
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    260 * param_purchase_cost;
-		running_cost_factor:            (600 + 250 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
-		purchase_running_cost_factor:   600 * param_running_cost + 250 * param_running_cost * NumberCarsInConsist();	
+		running_cost_factor:            (300 + 175 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 175 * param_running_cost * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	
@@ -17371,7 +17379,7 @@ switch(FEAT_TRAINS, PARENT, sw_e5_series_pantob, cargo_subtype) {
 		}
 
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e5_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
+switch(FEAT_TRAINS, SELF, sw_e5_series_attach_vehid, [vehicle_type_id == series_e5 || vehicle_type_id == series_e6 || vehicle_type_id == mu_car_full]) {
  0: return string(ONLY_ADD_MUCAR);
 }
 
@@ -17412,7 +17420,7 @@ item(FEAT_TRAINS, series_e5) {
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
 		speed:                          370 km/h;					// Operational Top Speed
-		power:                          1290 hp;					// Overwritten by callback
+		power:                          1690 hp;					// Overwritten by callback
 		weight:                         45;
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
@@ -17424,7 +17432,7 @@ item(FEAT_TRAINS, series_e5) {
 		can_attach_wagon:				sw_e5_series_attach_vehid;
 		start_stop:						sw_e5_series_stop_start;
 		purchase_weight:                45;
-        purchase_power:                 402 * 4;
+        purchase_power:                 602 * 4;
 		/* Graphics */
 		default:                        sw_e5_series_graphics;
 		purchase:                       sw_buy_e5_series_pink_livery;
@@ -17432,7 +17440,7 @@ item(FEAT_TRAINS, series_e5) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_param_length;
-		power:							max ((NumberCarsInConsist() - 2 ),0) * 402 * 4 ;
+		power:							max ((NumberCarsInConsist() - 2 ),0) * 602 * 4 ;
 		speed:							sw_e5_series_speed;
 		weight:							NumberCarsInConsist() * 45;
 		cargo_capacity:                 25 * CapacityFactor();										// 731 capacity / (10 cars * 3 parts) is approx 25						
@@ -17714,7 +17722,7 @@ switch(FEAT_TRAINS, PARENT, sw_e6_series_pant2b, cargo_subtype) {
 # 1 "src/trains/e6_series/e6_series.pnml" 2
 # 1 "src/trains/e6_series/pnml/e6_series_item.pnml" 1
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e6_series_attach_vehid, [vehicle_type_id == series_e6 || vehicle_type_id == mu_car_ms]) {
+switch(FEAT_TRAINS, SELF, sw_e6_series_attach_vehid, [vehicle_type_id == series_e6 || vehicle_type_id == series_e5 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/

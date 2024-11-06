@@ -1,5 +1,5 @@
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e6_series_attach_vehid, [vehicle_type_id == series_e6 || vehicle_type_id == mu_car_ms]) {
+switch(FEAT_TRAINS, SELF, sw_e6_series_attach_vehid, [vehicle_type_id == series_e6 || vehicle_type_id == series_e5 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/

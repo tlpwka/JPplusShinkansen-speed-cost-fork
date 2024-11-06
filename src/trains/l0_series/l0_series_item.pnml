@@ -3,18 +3,21 @@ switch (FEAT_TRAINS, SELF, sw_l0_series_articulated_part, extra_callback_info1) 
 		1 .. 2: return series_l0;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
-
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_l0_series_speed, current_year) {
+	    0..2031: return 601;                        // Until 2024, Speed = 603 km/h
+	    return 813;                                 // After 2024, Speed = 815 km/h
+}
 /*---Cargo Capacity---*/
 switch (FEAT_TRAINS, SELF, sw_l0_series_cargo_capacity_levels, position_in_consist == 1 || position_in_consist_from_end == 1 ) {				
-		1:  return 24 * CapacityFactor();		
-		return 60 * CapacityFactor();
+		1:  return 40 * CapacityFactor();		
+		return 75 * CapacityFactor();
 	}
 
 switch (FEAT_TRAINS, SELF, sw_l0_series_cargo_capacity, position_in_consist % 3) {				
 		1:  sw_l0_series_cargo_capacity_levels; 				
 		return 0;
 	}
-
 
 item(FEAT_TRAINS, series_l0) {
 	property {
@@ -39,9 +42,9 @@ item(FEAT_TRAINS, series_l0) {
 		cargo_capacity:                 1;							// 
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
-		/* Stats */
-        speed:                          605 km/h;									
-		power:                          800*4*10 hp;            			
+		/* Stats */							
+		power:                          800*4*10 hp;
+		speed:				601 km/h;            			
 		weight:                         25 tons;	                			
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
@@ -62,14 +65,15 @@ item(FEAT_TRAINS, series_l0) {
         /* Stats */
         length:                         sw_param_length;
         power:                          (( NumberCarsInConsist() / 2 ) + 2 ) * 400 * 4;	
+	speed:							sw_l0_series_speed;        
         weight:                         NumberCarsInConsist() * 25;									// https://linear-chuo-shinkansen.jr-central.co.jp/about/design/
 		cargo_capacity:                 sw_l0_series_cargo_capacity();
-		purchase_cargo_capacity:		60 / 3 * CapacityFactor() ;													
+		purchase_cargo_capacity:		75 / 3 * CapacityFactor() ;													
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    260 * param_purchase_cost;
-		running_cost_factor:            (600 + 250 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
-		purchase_running_cost_factor:   600 * param_running_cost + 250 * param_running_cost * NumberCarsInConsist();	
+		running_cost_factor:            (300 + 175 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;
+		purchase_running_cost_factor:   300 * param_running_cost + 175 * param_running_cost * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	

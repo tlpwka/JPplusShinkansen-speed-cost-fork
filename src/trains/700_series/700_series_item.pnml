@@ -85,7 +85,9 @@ item(FEAT_TRAINS, series_700) {
 	    0..2030: return 388;                        // Until 2026, Speed = 350 km/h
 	    return 502;                                 // After 2026, Speed = 504 km/h
     }	
-
+switch(FEAT_TRAINS, SELF, sw_n700m_series_attach_vehid, [vehicle_type_id == series_923 || vehicle_type_id == mu_car_mail || vehicle_type_id == mu_car_full]) {
+ 0: return string(MU_UNIQUE);
+ }
 	/*---Running Cost Factor---*/
 	switch (FEAT_TRAINS, PARENT, sw_923_series_running_cost_factor, param_dryellow ) {				
 		1: (150 + 60 * NumberCarsInConsist() * param_A / param_B ) * RunningCostFactor() * param_running_cost;		// Mail
@@ -130,7 +132,7 @@ item(FEAT_TRAINS, series_700) {
 			/* Menu */
 			additional_text:                string(STR_DESC_923_SERIES_GIMMICK);
 			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
-			can_attach_wagon:				sw_attach_mu_car_full;
+			can_attach_wagon:				sw_n700m_series_attach_vehid;
 			start_stop:						sw_stop_start_full_length_4;
 			purchase_weight:                44;
 			purchase_power:                 369 * 4;
@@ -202,7 +204,7 @@ item(FEAT_TRAINS, series_700) {
 			/* Menu */
 			additional_text:                string(STR_DESC_923_SERIES_MAIL);
 			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
-			can_attach_wagon:				sw_attach_mu_car_mail;
+			can_attach_wagon:				sw_n700m_series_attach_vehid;
 			start_stop:						sw_stop_start_full_length_4;
 			/* Graphics */
 			default:                        sw_923_series_graphics;
@@ -272,7 +274,7 @@ item(FEAT_TRAINS, series_700) {
 			/* Menu */
 			additional_text:                string(STR_DESC_923_SERIES);
 			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
-			can_attach_wagon:				sw_attach_mu_car_full;
+			can_attach_wagon:				sw_n700m_series_attach_vehid;
 			start_stop:						sw_stop_start_full_length_4;
 			/* Graphics */
 			default:                        sw_923_series_graphics;

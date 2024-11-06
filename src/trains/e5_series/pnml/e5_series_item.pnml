@@ -11,7 +11,7 @@
 		}
 
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e5_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
+switch(FEAT_TRAINS, SELF, sw_e5_series_attach_vehid, [vehicle_type_id == series_e5 || vehicle_type_id == series_e6 || vehicle_type_id == mu_car_full]) {
  0: return string(ONLY_ADD_MUCAR);
 }
 
@@ -52,7 +52,7 @@ item(FEAT_TRAINS, series_e5) {
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
 		speed:                          370 km/h;					// Operational Top Speed
-		power:                          1290 hp;					// Overwritten by callback
+		power:                          1690 hp;					// Overwritten by callback
 		weight:                         45;
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
@@ -64,7 +64,7 @@ item(FEAT_TRAINS, series_e5) {
 		can_attach_wagon:				sw_e5_series_attach_vehid;
 		start_stop:						sw_e5_series_stop_start;
 		purchase_weight:                45;
-        purchase_power:                 402 * 4;
+        purchase_power:                 602 * 4;
 		/* Graphics */
 		default:                        sw_e5_series_graphics;
 		purchase:                       sw_buy_e5_series_pink_livery;
@@ -72,7 +72,7 @@ item(FEAT_TRAINS, series_e5) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_param_length;
-		power:							max ((NumberCarsInConsist() - 2 ),0) * 402 * 4 ;
+		power:							max ((NumberCarsInConsist() - 2 ),0) * 602 * 4 ;
 		speed:							sw_e5_series_speed;
 		weight:							NumberCarsInConsist() * 45;
 		cargo_capacity:                 25 * CapacityFactor();										// 731 capacity / (10 cars * 3 parts) is approx 25						
