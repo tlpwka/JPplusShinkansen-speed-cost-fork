@@ -2,6 +2,11 @@
 switch(FEAT_TRAINS, SELF, sw_e3_series_attach_vehid, [vehicle_type_id == series_e3 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
 }
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e3_series_speed, current_year) {
+	    0..2035: return 275;                        // Until 2025, Speed = 370 km/h
+	    return 348;                                 // After 2025, Speed = 504 km/h
+    }
 /*---END OF SECTION---*/
 
 item(FEAT_TRAINS, series_e3) {
@@ -48,6 +53,7 @@ item(FEAT_TRAINS, series_e3) {
         purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;     // 300 kW = 400 hp
+	speed:							sw_e3_series_speed;
         weight:                         43 * num_vehs_in_consist;
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  					
 		    loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor

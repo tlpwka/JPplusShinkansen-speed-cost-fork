@@ -8391,7 +8391,11 @@ switch (FEAT_TRAINS, SELF, sw_500_series_articulated_part, extra_callback_info1)
 		1 .. 2: return series_500;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
-
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_500_series_speed, current_year) {
+	    0..2032: return 320;                        // Until 2025, Speed = 370 km/h
+	    return 348;                                 // After 2025, Speed = 504 km/h
+    }
 item(FEAT_TRAINS, series_500) {
 	property {
 		/* Menu */
@@ -8439,6 +8443,7 @@ item(FEAT_TRAINS, series_500) {
 		length:                         sw_param_length;
 		weight:							NumberCarsInConsist() * 42;
 		power:							NumberCarsInConsist() * 382 * 4;	// 285 kW
+		speed:							sw_500_series_speed;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
@@ -11331,7 +11336,7 @@ switch (FEAT_TRAINS, SELF, sw_l0_series_articulated_part, extra_callback_info1) 
 /* SPEED */
     switch (FEAT_TRAINS, SELF, sw_l0_series_speed, current_year) {
 	    0..2031: return 601;                        // Until 2024, Speed = 603 km/h
-	    return 813;                                 // After 2024, Speed = 815 km/h
+	    return 675;                                 // After 2024, Speed = 675 km/h
 }
 /*---Cargo Capacity---*/
 switch (FEAT_TRAINS, SELF, sw_l0_series_cargo_capacity_levels, position_in_consist == 1 || position_in_consist_from_end == 1 ) {				
@@ -15188,7 +15193,12 @@ switch (FEAT_TRAINS, SELF, sw_e2_series_articulated_part, extra_callback_info1) 
 		1 .. 2: return series_e2;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
-
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e2_series_speed, current_year) {
+	    0..2035: return 275;                        // Until 2025, Speed = 370 km/h
+	    return 348;                                 // After 2025, Speed = 504 km/h
+    }
+	
 item(FEAT_TRAINS, series_e2) {
 	property {
 		/* Menu */
@@ -15235,6 +15245,7 @@ item(FEAT_TRAINS, series_e2) {
         /* Stats */
         length:                         sw_param_length;
         power:                          max((NumberCarsInConsist() - 2 ),0) * 402 * 4;
+        speed:							sw_e2_series_speed;
         weight:                        	NumberCarsInConsist() * 46;
 		cargo_capacity:                 27 * CapacityFactor();										// 815 capacity / (10 cars * 3 parts) is approx 27						
 		loading_speed:					27 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
@@ -16273,6 +16284,11 @@ switch (FEAT_TRAINS, PARENT, sw_e3_series_everything_else_coaches, vehicle_is_re
 switch(FEAT_TRAINS, SELF, sw_e3_series_attach_vehid, [vehicle_type_id == series_e3 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
 }
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e3_series_speed, current_year) {
+	    0..2035: return 275;                        // Until 2025, Speed = 370 km/h
+	    return 348;                                 // After 2025, Speed = 504 km/h
+    }
 /*---END OF SECTION---*/
 
 item(FEAT_TRAINS, series_e3) {
@@ -16319,6 +16335,7 @@ item(FEAT_TRAINS, series_e3) {
         purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;     // 300 kW = 400 hp
+	speed:							sw_e3_series_speed;
         weight:                         43 * num_vehs_in_consist;
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  					
 		    loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
@@ -21379,11 +21396,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_forwards_10, position_in_consist )
 		8:  sw_e5_series_coachf_mp4_10_check;
 		9:  sw_e5_series_coachf_mp5_10_check;
 		// 3 Coach
-		10: sw_e5_series_pantof_mp1_10_check;
-		11: sw_e5_series_pantof_mp2_10_check;
-		12: sw_e5_series_pantof_mp3_10_check;
-		13: sw_e5_series_pantof_mp4_10_check;
-		14: sw_e5_series_pantof_mp5_10_check;
+//		10: sw_e5_series_pantof_mp1_10_check;
+//		11: sw_e5_series_pantof_mp2_10_check;
+//		12: sw_e5_series_pantof_mp3_10_check;
+//		13: sw_e5_series_pantof_mp4_10_check;
+//		14: sw_e5_series_pantof_mp5_10_check;
 		// 4 Panto
 		15: sw_e5_series_coachf_mp1_10_check;
 		16: sw_e5_series_coachf_mp2_10_check;
@@ -21391,11 +21408,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_forwards_10, position_in_consist )
 		18: sw_e5_series_coachf_mp4_10_check;
 		19: sw_e5_series_coachf_mp5_10_check;
 		// 5 Coach
-		20: sw_e5_series_coachf_mp1_10_check;
-		21: sw_e5_series_coachf_mp2_10_check;
-		22: sw_e5_series_coachf_mp3_10_check;
-		23: sw_e5_series_coachf_mp4_10_check;
-		24: sw_e5_series_coachf_mp5_10_check;
+//		20: sw_e5_series_coachf_mp1_10_check;
+//		21: sw_e5_series_coachf_mp2_10_check;
+//		22: sw_e5_series_coachf_mp3_10_check;
+//		23: sw_e5_series_coachf_mp4_10_check;
+//		24: sw_e5_series_coachf_mp5_10_check;
 		// 6 Coach
 		25: sw_e5_series_coachf_mp1_10_check;
 		26: sw_e5_series_coachf_mp2_10_check;
@@ -21415,11 +21432,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_forwards_10, position_in_consist )
 		38: sw_e5_series_coachf_mp4_10_check;
 		39: sw_e5_series_coachf_mp5_10_check;
 		// 9 Coach
-		40: sw_e5_series_coachf_mp1_10_check;
-		41: sw_e5_series_coachf_mp2_10_check;
-		42: sw_e5_series_coachf_mp3_10_check;
-		43: sw_e5_series_coachf_mp4_10_check;
-		44: sw_e5_series_coachf_mp5_10_check;
+//		40: sw_e5_series_coachf_mp1_10_check;
+//		41: sw_e5_series_coachf_mp2_10_check;
+//		42: sw_e5_series_coachf_mp3_10_check;
+//		43: sw_e5_series_coachf_mp4_10_check;
+//		44: sw_e5_series_coachf_mp5_10_check;
 		// 10 Cab
 		45: sw_e5_series_cab02f_mp1_10_check;
 		46: sw_e5_series_cab02f_mp2_10_check;
@@ -21831,11 +21848,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_forwards_10, position_in_consist
 		3:  sw_e5_series_cab01f_mp4_10_check;
 		4:  sw_e5_series_cab01f_mp5_10_check;
 		// 2 Coach 
-		5:  sw_e5_series_coachf_mp1_10_check;
-		6:  sw_e5_series_coachf_mp2_10_check;
-		7:  sw_e5_series_coachf_mp3_10_check;
-		8:  sw_e5_series_coachf_mp4_10_check;
-		9:  sw_e5_series_coachf_mp5_10_check;
+//		5:  sw_e5_series_coachf_mp1_10_check;
+//		6:  sw_e5_series_coachf_mp2_10_check;
+//		7:  sw_e5_series_coachf_mp3_10_check;
+//		8:  sw_e5_series_coachf_mp4_10_check;
+//		9:  sw_e5_series_coachf_mp5_10_check;
 		// 3 Coach
 		10: sw_e5_series_pantof_mp1_10_check;
 		11: sw_e5_series_pantof_mp2_10_check;
@@ -21849,11 +21866,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_forwards_10, position_in_consist
 		18: sw_e5_series_coachf_mp4_10_check;
 		19: sw_e5_series_coachf_mp5_10_check;
 		// 5 Coach
-		20: sw_e5_series_coachf_mp1_10_check;
-		21: sw_e5_series_coachf_mp2_10_check;
-		22: sw_e5_series_coachf_mp3_10_check;
-		23: sw_e5_series_coachf_mp4_10_check;
-		24: sw_e5_series_coachf_mp5_10_check;
+//		20: sw_e5_series_coachf_mp1_10_check;
+//		21: sw_e5_series_coachf_mp2_10_check;
+//		22: sw_e5_series_coachf_mp3_10_check;
+//		23: sw_e5_series_coachf_mp4_10_check;
+//		24: sw_e5_series_coachf_mp5_10_check;
 		// 6 Coach
 		25: sw_e5_series_coachf_mp1_10_check;
 		26: sw_e5_series_coachf_mp2_10_check;
@@ -21867,11 +21884,10 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_forwards_10, position_in_consist
 		33: sw_e5_series_coachf_mp4_10_check;
 		34: sw_e5_series_coachf_mp5_10_check;
         // 8 Coach
-		35: sw_e5_series_coachf_mp1_10_check;
-		36: sw_e5_series_coachf_mp2_10_check;
-		37: sw_e5_series_coachf_mp3_10_check;
-		38: sw_e5_series_coachf_mp4_10_check;
-		39: sw_e5_series_coachf_mp5_10_check;
+//		35: sw_e5_series_coachf_mp1_10_check;
+//		36: sw_e5_series_coachf_mp2_10_check;
+//		37: sw_e5_series_coachf_mp3_10_check;
+//		38: sw_e5_series_coachf_mp4_10_check;
 		// 9 Coach
 		40: sw_e5_series_coachf_mp1_10_check;
 		41: sw_e5_series_coachf_mp2_10_check;

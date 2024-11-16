@@ -4,7 +4,12 @@ switch (FEAT_TRAINS, SELF, sw_e2_series_articulated_part, extra_callback_info1) 
 		1 .. 2: return series_e2;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
-
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_e2_series_speed, current_year) {
+	    0..2035: return 275;                        // Until 2025, Speed = 370 km/h
+	    return 348;                                 // After 2025, Speed = 504 km/h
+    }
+	
 item(FEAT_TRAINS, series_e2) {
 	property {
 		/* Menu */
@@ -51,6 +56,7 @@ item(FEAT_TRAINS, series_e2) {
         /* Stats */
         length:                         sw_param_length;
         power:                          max((NumberCarsInConsist() - 2 ),0) * 402 * 4;
+        speed:							sw_e2_series_speed;
         weight:                        	NumberCarsInConsist() * 46;
 		cargo_capacity:                 27 * CapacityFactor();										// 815 capacity / (10 cars * 3 parts) is approx 27						
 		loading_speed:					27 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor

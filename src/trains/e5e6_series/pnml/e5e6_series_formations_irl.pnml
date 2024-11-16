@@ -112,11 +112,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_forwards_10, position_in_consist )
 		8:  sw_e5_series_coachf_mp4_10_check;
 		9:  sw_e5_series_coachf_mp5_10_check;
 		// 3 Coach
-		10: sw_e5_series_pantof_mp1_10_check;
-		11: sw_e5_series_pantof_mp2_10_check;
-		12: sw_e5_series_pantof_mp3_10_check;
-		13: sw_e5_series_pantof_mp4_10_check;
-		14: sw_e5_series_pantof_mp5_10_check;
+//		10: sw_e5_series_pantof_mp1_10_check;
+//		11: sw_e5_series_pantof_mp2_10_check;
+//		12: sw_e5_series_pantof_mp3_10_check;
+//		13: sw_e5_series_pantof_mp4_10_check;
+//		14: sw_e5_series_pantof_mp5_10_check;
 		// 4 Panto
 		15: sw_e5_series_coachf_mp1_10_check;
 		16: sw_e5_series_coachf_mp2_10_check;
@@ -124,11 +124,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_forwards_10, position_in_consist )
 		18: sw_e5_series_coachf_mp4_10_check;
 		19: sw_e5_series_coachf_mp5_10_check;
 		// 5 Coach
-		20: sw_e5_series_coachf_mp1_10_check;
-		21: sw_e5_series_coachf_mp2_10_check;
-		22: sw_e5_series_coachf_mp3_10_check;
-		23: sw_e5_series_coachf_mp4_10_check;
-		24: sw_e5_series_coachf_mp5_10_check;
+//		20: sw_e5_series_coachf_mp1_10_check;
+//		21: sw_e5_series_coachf_mp2_10_check;
+//		22: sw_e5_series_coachf_mp3_10_check;
+//		23: sw_e5_series_coachf_mp4_10_check;
+//		24: sw_e5_series_coachf_mp5_10_check;
 		// 6 Coach
 		25: sw_e5_series_coachf_mp1_10_check;
 		26: sw_e5_series_coachf_mp2_10_check;
@@ -148,11 +148,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_forwards_10, position_in_consist )
 		38: sw_e5_series_coachf_mp4_10_check;
 		39: sw_e5_series_coachf_mp5_10_check;
 		// 9 Coach
-		40: sw_e5_series_coachf_mp1_10_check;
-		41: sw_e5_series_coachf_mp2_10_check;
-		42: sw_e5_series_coachf_mp3_10_check;
-		43: sw_e5_series_coachf_mp4_10_check;
-		44: sw_e5_series_coachf_mp5_10_check;
+//		40: sw_e5_series_coachf_mp1_10_check;
+//		41: sw_e5_series_coachf_mp2_10_check;
+//		42: sw_e5_series_coachf_mp3_10_check;
+//		43: sw_e5_series_coachf_mp4_10_check;
+//		44: sw_e5_series_coachf_mp5_10_check;
 		// 10 Cab
 		45: sw_e5_series_cab02f_mp1_10_check;
 		46: sw_e5_series_cab02f_mp2_10_check;

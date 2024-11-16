@@ -6,7 +6,7 @@ switch (FEAT_TRAINS, SELF, sw_l0_series_articulated_part, extra_callback_info1) 
 /* SPEED */
     switch (FEAT_TRAINS, SELF, sw_l0_series_speed, current_year) {
 	    0..2031: return 601;                        // Until 2024, Speed = 603 km/h
-	    return 813;                                 // After 2024, Speed = 815 km/h
+	    return 675;                                 // After 2024, Speed = 675 km/h
 }
 /*---Cargo Capacity---*/
 switch (FEAT_TRAINS, SELF, sw_l0_series_cargo_capacity_levels, position_in_consist == 1 || position_in_consist_from_end == 1 ) {				

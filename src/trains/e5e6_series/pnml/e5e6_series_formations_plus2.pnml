@@ -129,11 +129,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_forwards_10, position_in_consist
 		3:  sw_e5_series_cab01f_mp4_10_check;
 		4:  sw_e5_series_cab01f_mp5_10_check;
 		// 2 Coach 
-		5:  sw_e5_series_coachf_mp1_10_check;
-		6:  sw_e5_series_coachf_mp2_10_check;
-		7:  sw_e5_series_coachf_mp3_10_check;
-		8:  sw_e5_series_coachf_mp4_10_check;
-		9:  sw_e5_series_coachf_mp5_10_check;
+//		5:  sw_e5_series_coachf_mp1_10_check;
+//		6:  sw_e5_series_coachf_mp2_10_check;
+//		7:  sw_e5_series_coachf_mp3_10_check;
+//		8:  sw_e5_series_coachf_mp4_10_check;
+//		9:  sw_e5_series_coachf_mp5_10_check;
 		// 3 Coach
 		10: sw_e5_series_pantof_mp1_10_check;
 		11: sw_e5_series_pantof_mp2_10_check;
@@ -147,11 +147,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_forwards_10, position_in_consist
 		18: sw_e5_series_coachf_mp4_10_check;
 		19: sw_e5_series_coachf_mp5_10_check;
 		// 5 Coach
-		20: sw_e5_series_coachf_mp1_10_check;
-		21: sw_e5_series_coachf_mp2_10_check;
-		22: sw_e5_series_coachf_mp3_10_check;
-		23: sw_e5_series_coachf_mp4_10_check;
-		24: sw_e5_series_coachf_mp5_10_check;
+//		20: sw_e5_series_coachf_mp1_10_check;
+//		21: sw_e5_series_coachf_mp2_10_check;
+//		22: sw_e5_series_coachf_mp3_10_check;
+//		23: sw_e5_series_coachf_mp4_10_check;
+//		24: sw_e5_series_coachf_mp5_10_check;
 		// 6 Coach
 		25: sw_e5_series_coachf_mp1_10_check;
 		26: sw_e5_series_coachf_mp2_10_check;
@@ -165,11 +165,10 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_forwards_10, position_in_consist
 		33: sw_e5_series_coachf_mp4_10_check;
 		34: sw_e5_series_coachf_mp5_10_check;
         // 8 Coach
-		35: sw_e5_series_coachf_mp1_10_check;
-		36: sw_e5_series_coachf_mp2_10_check;
-		37: sw_e5_series_coachf_mp3_10_check;
-		38: sw_e5_series_coachf_mp4_10_check;
-		39: sw_e5_series_coachf_mp5_10_check;
+//		35: sw_e5_series_coachf_mp1_10_check;
+//		36: sw_e5_series_coachf_mp2_10_check;
+//		37: sw_e5_series_coachf_mp3_10_check;
+//		38: sw_e5_series_coachf_mp4_10_check;
 		// 9 Coach
 		40: sw_e5_series_coachf_mp1_10_check;
 		41: sw_e5_series_coachf_mp2_10_check;
